@@ -1,5 +1,6 @@
-<div class="container-fluid">
-  <div class="col-6">
+<div class="layout">
+  
+  <div>
     <table class="table">
       <thead>
         <tr>
@@ -11,22 +12,48 @@
       </thead>
       <tbody>
         @for (s of series; track s) {
-        <tr>
-          <td>
-            <dd>{{ s.id }}</dd>
-          </td>
-          <td>
-            <dd>{{ s.name }}</dd>
-          </td>
-          <td>
-            <dd>{{ s.channel }}</dd>
-          </td>
-          <td>
-            <dd>{{ s.seasons }}</dd>
-          </td>
-        </tr>
+          <tr>
+            <td><dd>{{ s.id }}</dd></td>
+
+            
+            <td>
+              <a href
+                 class="serie-link"
+                 (click)="onSelect(s); $event.preventDefault()">
+                {{ s.name }}
+              </a>
+            </td>
+
+            <td><dd>{{ s.channel }}</dd></td>
+            <td><dd>{{ s.seasons }}</dd></td>
+          </tr>
         }
       </tbody>
     </table>
+
+    <p class="mt-2 fw-semibold">
+      Seasons average: {{ averageSeasons | number:'1.0-2' }}
+    </p>
   </div>
+
+  
+  <aside id="detail" aria-live="polite">
+    @if (selected) {
+      <div class="card">
+        <img [src]="selected.imageUrl"
+             [alt]="'Poster de ' + selected.name">
+        <div class="card-body">
+          <h5 class="card-title">{{ selected.name }}</h5>
+          <p class="card-text">{{ selected.description }}</p>
+          <a class="btn btn-primary"
+             [href]="selected.link"
+             target="_blank" rel="noopener">
+            Ver más
+          </a>
+        </div>
+      </div>
+    } @else {
+      <div class="placeholder">Selecciona una serie</div>
+    }
+  </aside>
 </div>

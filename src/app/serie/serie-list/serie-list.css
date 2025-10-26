@@ -1,0 +1,41 @@
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 16px;
+  align-items: start;
+}
+
+.serie-link {
+  color: #0d6efd;
+  text-decoration: none;
+  cursor: pointer;
+}
+.serie-link:hover { text-decoration: underline; }
+
+
+.card {
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+}
+.card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.card-body { padding: 12px; }
+.card-title { margin: 0 0 8px; }
+.card-text { margin: 0 0 12px; line-height: 1.4; }
+.btn.btn-primary {
+  display: inline-block;
+  padding: 6px 12px;
+  background: #0d6efd;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+}
+.btn.btn-primary:hover { filter: brightness(1.05); }
+
+.placeholder { color: #6c757d; padding-top: 8px; }
